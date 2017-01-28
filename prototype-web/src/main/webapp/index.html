@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app="demoApp">
+    <head>
+        <title>Place Holder</title>        
+        <link rel="stylesheet" href="css/style.css">
+        <script src="js/vendor/angular.min.js"></script>
+        <script src="js/prototype.js"></script>
+    </head>
+    <body>
+        <header>
+            <h1>Place Holder</h1>
+        </header>
+        <section ng-controller="placeCtrl">
+            <form id="todo-form" ng-submit="addPlace()">
+                <input id="new-place" placeholder="Enter a place" ng-model="newPlace" />
+            </form>
+            <article ng-show="places.length">
+                <ul id="place-list">
+                    <li ng-repeat="place in places" ng-class="{display: place.displayed}">
+                        <div class="view">
+                            <input class="mark" type="checkbox" ng-model="place.displayed" />
+                            <span>{{place.name}}</span>
+                            <span class="close" ng-click="removePlace(place)">x</span>
+                        </div>
+                    </li>
+                </ul>
+                <input id="mark-all" type="checkbox" ng-model="allChecked" ng-click="markAll(allChecked)" />
+                <label class="btn btn-info" for="mark-all">Display all</label>
+                <button class="btn btn-danger" ng-click="clearDisplayedPlaces()">Remove displayed places</button>
+            </article>
+        </section>
+    </body>
+</html>
